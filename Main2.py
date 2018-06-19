@@ -68,9 +68,9 @@ tupla = (1,2,3) # la tupla es un uso menos habitual son inmutable
 tupla[2]
 
 # Arreglos bidimensional
-a = [1,2,3]
-b = [4,5,6]
-c = [7,8,9]
+a = [1, 2, 3]
+b = [4, 5, 6]
+c = [7, 8, 9]
 
 matriz = []
 matriz.append(a)
@@ -112,7 +112,7 @@ else:
 
 # for (recorrer listas)
 range(5)
-range(5,10)
+range(5, 10)
 
 for i in range(10):
     print(i, i*i)
@@ -147,12 +147,74 @@ for n in range(2, 10):
 while 1:
     pass # detiene la ejecución hasta teclear algo
 
-for i in range(1,13):
+for i in range(1, 13):
     if i % 2 == 0:
-        continue; # continuar con la siguiente iteración
+        continue  # continuar con la siguiente iteración
     else:
         print(i)
 else:
     print("lista recorrida") # se ejecuta cuando termina la lista el for,
                              # y en el while cuando la condición no cumple
+
+
+""" Funciones """
+
+# Procedimiento
+
+def fib(n):
+    "escribir la serie Fibonacci hasta n"
+    a, b = 0, 1
+    while b < n:
+        print(b)
+        a, b = b, a+b
+
+fib(100)
+fib(0)
+
+
+# Función
+
+def fib2(n):
+    "Devolver una lista con los números de la serie de Fibonacci hasta n"
+    resultado = []
+    a, b = 0, 1
+    while b < n:
+        resultado.append(b)
+        a, b = b, a+b
+    return resultado
+
+
+x = fib2(100)
+print(x)
+
+# Funciones: argumentos por omisión (funciones que pueden ser llamadas con menos argumentos)
+def confirmar(indicador, intentos = 4, queja = 'sí o no'):
+    while 1:
+        respuesta = input(indicador)
+        if respuesta in ('s', 'si', 'sí'):
+            return 1
+        elif respuesta in ('n', 'no'):
+            intentos = intentos - 1
+        if intentos < 0:
+            raise(IOError, 'Usuario rechazado')
+        print(queja)
+
+confirmar('todo ok')
+confirmar('desea continuar?', 2)
+
+# Funciones: argumentos por clave
+def loro(tension,estado='tieso',accion='voom',tipo='Azul noruego'):
+    print("-- Este loro no podría", accion)
+    print("aunque le aplicara", tension, "voltios.")
+    print("-- Bello plumaje, el", tipo)
+    print("-- ¡Está", estado, "!")
+
+loro(1000)
+loro(accion='VOOOOOM', tension=1000000)
+loro('mil', estado='criando malvas')
+loro('un millón de', 'desprovisto de vida', 'saltar')
+
+
+
+
 
