@@ -113,5 +113,30 @@ print(data)
 
 #bbdd instalar conector https://dev.mysql.com/downloads/connector/python/
 import mysql.connector
-conn = mysql.connector.connect(user="root", password="Emol.com5")
+con = mysql.connector.connect(user="root", password="Emol.com5", host="localhost", database="db")
+cursor = con.cursor()
+cursor.execute("CREATE TABLE example (id INT, data VARCHAR(100));")
+cursor.execute("INSERT INTO example (id, data) VALUES (9, 'hola');")
+con.commit()
+
+cursor.execute("SELECT * FROM example WHERE id =9;")
+rows = cursor.fetchall()
+
+for row in rows:
+    print(row)
+
+cursor.execute("DELETE FROM example WHERE id =9;")
+con.commit()
+
+cursor.close()
+con.close()
+
+help()
+
+#tipos de comentarios
+
+# comentario tipo 1
+""" comentario tipo 2
+puede usarse para más de una linea"""
+
 
